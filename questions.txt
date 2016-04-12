@@ -1,3 +1,3 @@
 [{"quest":"What is the first line in an HTML document?","answer1":"<DOCTYPE! html>","answer2":"<!DOCTYPE html>","answer3":"<html !DOCTYPE>","answer4":"<html DOCTYPE!>","used":false,"correct":2},
 {"quest":"In Regular Expressions, what does backslash w mean?","answer1":"whitespace","answer2":"Any alphanumeric number","answer3":"Any word Character","answer4":"Any Character","used":false,"correct":3},
-{"quest":"What is the correct structure for a table?","answer1":"table > tr > td","answer2":"table > td > tr","answer3":"table > tr > tc","answer4":"table > tc > tr","used":false,"correct":1}]
+{"quest":"What is the correct structure for a table?","answer1":"table > tr > td","answer2":"table > td > tr","answer3":"table > tr > tc","answer4":"table > tc > tr","used":false,"correct":1},]
