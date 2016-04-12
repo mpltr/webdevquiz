@@ -55,7 +55,7 @@ grabQuestions.send();
 
 // Selected questions Array
 function populateSelectedArray(){
-	for (var i =0; i < 3; i++) { //This needs changing once the questions are 20+
+	for (var i =0; i < 20; i++) { //This needs changing once the questions are 20+
 		do {
 			selectedNumber = Math.floor(Math.random()*question.length);
 		} while (question[selectedNumber].used === true);
@@ -108,6 +108,7 @@ for (var i =0; i<4; i++){
 		this.className = "answerHighlighted";
 	})
 }
+
 var usersAnswers = new Array();
 function processAnswer(){
 	if(gbc('answerHighlighted')[0]){

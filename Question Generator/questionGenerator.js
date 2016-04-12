@@ -29,7 +29,7 @@ gbi('create').addEventListener('click', function(){
     var fourthAnswerSplit = gbi('answerFour').value.split('\n');
     var correctAnswerSplit = gbi('correct').value.split('\n');
     
-    for (var i = 0; i < questionSplit.length; i++){
+    for (var i = 0; i < questionSplit.length - 1; i++){
         var qu = questionSplit[i];
         var a1 = firstAnswerSplit[i];
         var a2 = secondAnswerSplit[i];
