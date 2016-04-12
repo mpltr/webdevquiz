@@ -83,7 +83,7 @@ gbi('answerThree').innerText = selectedQuestion[number].answer3;
 gbi('answerFour').innerText = selectedQuestion[number].answer4;
 }
 
-gbi('Q1').style.backgroundColor = "red";
+gbi('Q1').style.color = "red";
 
 ////Next Button
 var currentQuestionNumber = 1;
@@ -109,19 +109,24 @@ function processAnswer(){
 		usersAnswers.push(gbc('answerHighlighted')[0].innerText);
 		gbc('answerHighlighted')[0].className = "answer";
         compareAnswer(currentQuestionNumber-1);
-        gbi('Q' + currentQuestionNumber).style.backgroundColor = "#b6ff12";
+        gbi('Q' + currentQuestionNumber).style.color = "#9b9b9b";
         currentQuestionNumber++;
-        gbi('Q' + currentQuestionNumber).style.backgroundColor = "red";
+        if (usersAnswers.length < 4){ //changed for testing, orig val 19
+        gbi('Q' + currentQuestionNumber).style.color = "red"; 
         displayQuestion(currentQuestionNumber-1);
-        alert(usersAnswers);
+        } else {
+            gbi('questionMaster').style.display = "none";
+            gbi('results').style.display = "block";
+            displayResults();
+        }
 	} else {
-		alert("you haven't selected an answer");
+		alert("Please select an answer");
 	}
 }
 
 var correctAnswers = new Array();
 function collectCorrectAnswer() {
-	for(var i=0; i<3; i++){
+	for(var i=0; i<4; i++){
 		for(var j=1; j<5; j++){
 			if (selectedQuestion[i].correct === j){
 				var answerNum = j.toString();
@@ -141,58 +146,22 @@ function compareAnswer(questnum) {
 	}
 }
 
+function displayResults(){
+        for(var i = 0; i < usersAnswers.length; i++){  
+            gbi("resultsTable").insertRow(-1);
+            var rows = gbi("resultsTable").rows;
+            var lastRow = rows[rows.length - 1];
+            lastRow.className += " tableRow";
+            lastRow.insertCell(0);
+            lastRow.insertCell(1);
+            lastRow.insertCell(2);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Random Question
-//var randomQuestion = question[Math.floor(Math.random()*question.length)]
-
-// Display question
-//function displayQuestion() {
-//gbi('question').innerText = randomQuestion.quest;
-//gbi('answerOne').innerText = randomQuestion.answer1;
-//gbi('answerTwo').innerText = randomQuestion.answer2;
-//gbi('answerThree').innerText = randomQuestion.answer3;
-//gbi('answerFour').innerText = randomQuestion.answer4;
-//}
-
-// Tested Selecting questions by clicking
-//for (var i=1; i < 20; i++) {
-//	gbi('Q' + i).addEventListener('click', function(){
-//		for(var j=1; j <20; j++) {
-//			gbi('Q' + j).style.backgroundColor = "#b6ff12";
-//		}
-//		var splitID = this.id;
-//		var splitVal = splitID[1] + splitID[2];
-//		gbi('question').innerText = selectedQuestion[splitVal].quest;
-//		gbi('answerOne').innerText = selectedQuestion[splitVal].answer1;
-//		gbi('answerTwo').innerText = selectedQuestion[splitVal].answer2;
-//		gbi('answerThree').innerText = selectedQuestion[splitVal].answer3;
-//		gbi('answerFour').innerText = selectedQuestion[splitVal].answer4;
-//		this.style.backgroundColor = "red";
-//	})
-//}
-
-
-
+            lastRow.cells[0].innerHTML = usersAnswers[i];
+            lastRow.cells[1].innerHTML = correctAnswers[i];
+            lastRow.cells[2].innerHTML = COW[i];
+                
+                    
+                    
+            }
+        
+    }

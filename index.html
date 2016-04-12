@@ -7,29 +7,42 @@
     <title></title>
     <body>
         <div id="centerPanel">
-            <div id="header">
-            
-            </div>
-            <div id="questionWrap">
-                <div id="question">
-                
+            <div id="questionMaster">
+                <div id="header">
+
+                </div>
+                <div id="questionWrap">
+                    <div id="question">
+
+                    </div>
+                </div>
+                <table id="answerWrap" cellspacing="0">
+                    <tr>
+                        <td class="answer" id="answerOne"></td>
+                        <td class="answer" id="answerTwo"></td>
+                    </tr>
+                    <tr>
+                        <td class="answer" id="answerThree"></td>
+                        <td class="answer" id="answerFour"></td>
+                    </tr>
+                </table>
+                <div id="buttonWrap">
+                    <a href="#"><div id="next" class="button">NEXT</div></a>            
+                </div>
+                <div id="questionStack">
+
                 </div>
             </div>
-            <table id="answerWrap" cellspacing="0">
-                <tr>
-                    <td class="answer" id="answerOne"></td>
-                    <td class="answer" id="answerTwo"></td>
-                </tr>
-                <tr>
-                    <td class="answer" id="answerThree"></td>
-                    <td class="answer" id="answerFour"></td>
-                </tr>
-            </table>
-            <div id="buttonWrap">
-                <div id="next" class="button">NEXT</div>            
-            </div>
-            <div id="questionStack">
-            
+            <div id="results">
+                <table id="resultsTable">
+                    <tr>
+                        <td>Your answer</td>
+                        <td>Correct answer</td>
+                        <td>Result</td>
+                    
+                    </tr>
+                
+                </table>            
             </div>
         </div>
         <script type="text/javascript" src="quizjs.js"></script>
