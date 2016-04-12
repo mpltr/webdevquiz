@@ -88,13 +88,7 @@ gbi('Q1').style.backgroundColor = "red";
 ////Next Button
 var currentQuestionNumber = 1;
 gbi('next').addEventListener('click', function(){
-	processAnswer();
-	compareAnswer(currentQuestionNumber-1);
-	gbi('Q' + currentQuestionNumber).style.backgroundColor = "#b6ff12";
-	currentQuestionNumber++;
-	gbi('Q' + currentQuestionNumber).style.backgroundColor = "red";
-	displayQuestion(currentQuestionNumber-1);
-	alert(COW);
+    processAnswer();
 })
 
 // Testing for answer selection
@@ -114,6 +108,12 @@ function processAnswer(){
 	if(gbc('answerHighlighted')[0]){
 		usersAnswers.push(gbc('answerHighlighted')[0].innerText);
 		gbc('answerHighlighted')[0].className = "answer";
+        compareAnswer(currentQuestionNumber-1);
+        gbi('Q' + currentQuestionNumber).style.backgroundColor = "#b6ff12";
+        currentQuestionNumber++;
+        gbi('Q' + currentQuestionNumber).style.backgroundColor = "red";
+        displayQuestion(currentQuestionNumber-1);
+        alert(usersAnswers);
 	} else {
 		alert("you haven't selected an answer");
 	}

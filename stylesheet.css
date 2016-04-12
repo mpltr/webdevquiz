@@ -30,8 +30,9 @@ html, body {
     background-color: darkslateblue;
     margin: auto;
     text-align: center;
-    line-height: 450%;
     font-size: 4vh;
+    display: flex;
+    align-items: center; 
 }
 
 #answerWrap {
@@ -42,13 +43,12 @@ html, body {
     margin: 0px;    
 }
 
-.answer {
+td.answer {
     width: calc(50% - 2px);
     height: 100%;
     background-color: blue;
     display: inline-block;
     text-align: center;
-    line-height: 450%;
     font-size: 4vh;
     padding: inherit;
     margin: inherit;
@@ -56,6 +56,7 @@ html, body {
     border: dashed;
     border-color: aliceblue;
     border-width: 1px;
+
 }
 
 .answerHighlighted {
@@ -64,7 +65,6 @@ html, body {
 	background-color: red;
 	display: inline-block;
 	text-align: center;
-	line-height: 450%;
 	font-size: 4vh;
 	padding: inherit;
 	margin: inherit;
