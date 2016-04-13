@@ -131,4 +131,23 @@ html, body {
 
 #resultsTable {
     color: aliceblue;
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    opacity: 0.9;
+    
+}
+
+#resultsTable tr {
+    background-color: #586081;
+}
+
+#tableHeader {
+    font-size: 3em;
+   
+}
+
+#results td {
+    border-radius: 2px;
+     font-size: em;
 }
