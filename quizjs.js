@@ -46,7 +46,6 @@ function importQuestions(grabbed){
 	question = parseGrabbed;
 	populateSelectedArray();
 	displayQuestion(0);            //Display the first question
-    gbi('Q1').style.color = "red"; //Set the Question stack color
 }
 grabQuestions.send();
 
@@ -65,7 +64,7 @@ function populateSelectedArray(){
         }
     }
 }
-//Display Question
+//Display Question +
 function displayQuestion(number) {
 gbi('question').innerText = selectedQuestion[number].quest;
 gbi('answerOne').innerText = selectedQuestion[number].answer1;
@@ -73,11 +72,12 @@ gbi('answerTwo').innerText = selectedQuestion[number].answer2;
 gbi('answerThree').innerText = selectedQuestion[number].answer3;
 gbi('answerFour').innerText = selectedQuestion[number].answer4;
 var stack = gbc('stack');
-var COL = "style.color";
-stack[number].COL = "red";
-if (number = 2){
-    stack[(number-1)].COL = "grey";
+stack[number].style.color = "red";
+if (number >= 1){
+    stack[number -1].style.color = "grey";
 }
+clearAnswer();   
+//    stack[(number+1)].COL = "white";
 }
 
 // Create question Number container (STACKS)
@@ -89,14 +89,19 @@ for (var i=1; i < 21; i++) {
 	testDiv.id = ("Q" + i)
 }
 
+// Clear answer
+function clearAnswer(){
+    for (var j=0; j<4; j++){
+        if(gbc('answerHighlighted')[j]){
+            gbc('answerHighlighted')[j].className = "answer";
+        }
+    }
+}
+
 // Click Answer Event Listener
 for (var i =0; i<4; i++){
 	gbc('answer')[i].addEventListener('click', function(){
-		for (var j=0; j<4; j++){
-			if(gbc('answerHighlighted')[j]){
-				gbc('answerHighlighted')[j].className = "answer";
-			}
-		}
+        clearAnswer();
 		this.className = "answerHighlighted";
 	})
 }
