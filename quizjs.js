@@ -66,6 +66,7 @@ function populateSelectedArray(){
 }
 //Display Question +
 function displayQuestion(number) {
+	if (number < 5){
 gbi('question').innerText = selectedQuestion[number].quest;
 gbi('answerOne').innerText = selectedQuestion[number].answer1;
 gbi('answerTwo').innerText = selectedQuestion[number].answer2;
@@ -77,7 +78,12 @@ if (number >= 1){
     stack[number -1].style.color = "grey";
 }
 clearAnswer();   
-//    stack[(number+1)].COL = "white";
+	} else {
+		gbi('questionMaster').style.display = "none";
+		gbi('results').style.display = "block";
+		displayResults();
+	}
+
 }
 
 // Create question Number container (STACKS)
@@ -116,7 +122,7 @@ var currentQuestionNumber = 0;
 function storeResult (callback) {
     var detectedAnswer = gbc('answerHighlighted')[0];
     if(detectedAnswer){   
-        var userAns = detectedAnswer.value;                                 //| Set properties
+        var userAns = detectedAnswer.innerText;                                 //| Set properties
         var correctAns = selectedQuestion[currentQuestionNumber].correct;   //| for creating 
         var result = function(){                    
             if (userAns === correctAns){
@@ -135,7 +141,7 @@ function storeResult (callback) {
 
 // Display the Results 
 function displayResults(){
-        for(var i = 0; i < usersAnswers.length; i++){  
+        for(var i = 0; i < results.length; i++){  
             gbi("resultsTable").insertRow(-1);
             var rows = gbi("resultsTable").rows;
             var lastRow = rows[rows.length - 1];
@@ -144,9 +150,9 @@ function displayResults(){
             lastRow.insertCell(1);
             lastRow.insertCell(2);
 
-            lastRow.cells[0].innerHTML = usersAnswers[i];
-            lastRow.cells[1].innerHTML = correctAnswers[i];
-            lastRow.cells[2].innerHTML = COW[i];
+            lastRow.cells[0].innerHTML = results[i].userAnswer;
+            lastRow.cells[1].innerHTML = results[i].correctAnswer;
+            lastRow.cells[2].innerHTML = results[i].result;
                 
                     
                     

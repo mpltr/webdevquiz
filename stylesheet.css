@@ -110,7 +110,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 500%;
+    font-size: 300%;
 }
 
 #next:hover {
