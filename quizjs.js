@@ -51,7 +51,7 @@ grabQuestions.send();
 
 // Populate Selected Array
 function populateSelectedArray(){
-    for (var i =0; i < 20; i++) { //This needs changing once the questions are 20+
+    for (var i =0; i < 20; i++) { 
         do {
             selectedNumber = Math.floor(Math.random()*question.length);
         } while (question[selectedNumber].used === true);
@@ -68,7 +68,7 @@ function populateSelectedArray(){
 }
 //Display Question +
 function displayQuestion(number) {
-	if (number < 20){
+	if (number < 20){ // Change to change number of questions before going to results page
 gbi('question').innerHTML = selectedQuestion[number].quest;
 gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
 gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
@@ -84,6 +84,7 @@ clearAnswer();
 		gbi('questionMaster').style.display = "none";
 		gbi('results').style.display = "block";
 		displayResults();
+		listenToRows();
 	}
 
 }
@@ -158,65 +159,37 @@ function displayResults(){
             lastRow.insertCell(1);
             lastRow.insertCell(2);
             lastRow.insertCell(3);
+			lastRow.insertCell(4);
             
             lastRow.cells[0].innerHTML = i+1;
-            lastRow.cells[1].innerHTML = results[i].userAnswer;
-            lastRow.cells[2].innerHTML = results[i].correctAnswer;
-            
+			lastRow.cells[1].innerHTML = selectedQuestion[i].quest;
+			lastRow.cells[2].innerHTML = results[i].userAnswer;
+			lastRow.cells[3].innerHTML = results[i].correctAnswer;
+			lastRow.cells[3].style.display = "none";
+			lastRow.cells[3].className = "correct";
             
             if (results[i].result === "Correct!"){
                 lastRow.className = "correct";
-                lastRow.cells[3].innerHTML = '<img src="correct.png">';  
+                lastRow.cells[4].innerHTML = '<img src="correct.png">';  
             } else {
                 lastRow.className = "wrong";
-                lastRow.cells[3].innerHTML = '<img src="wrong.png">';  
+                lastRow.cells[4].innerHTML = '<img src="wrong.png">';  
             }
         }
-        
-    }
+	var totalWrong = gbc('wrong').length; //dodgy maths. Could throw up bugs
+	var totalQuestions = gbi('resultsTable').rows.length - 1;
+	var totalCorrect = totalQuestions - totalWrong;
+}
 
-
-
-//
-//var usersAnswers = new Array();
-//function processAnswer(){
-//	if(gbc('answerHighlighted')[0]){
-//		usersAnswers.push(gbc('answerHighlighted')[0].innerText);
-//		gbc('answerHighlighted')[0].className = "answer";
-//        compareAnswer(currentQuestionNumber-1);
-//        gbi('Q' + currentQuestionNumber).style.color = "#9b9b9b";
-//        currentQuestionNumber++;
-//        if (usersAnswers.length < 4){ //changed for testing, orig val 19
-//        gbi('Q' + currentQuestionNumber).style.color = "red"; 
-//        displayQuestion(currentQuestionNumber-1);
-//        } else {
-//            gbi('questionMaster').style.display = "none";
-//            gbi('results').style.display = "block";
-//            displayResults();
-//        }
-//	} else {
-//		alert("Please select an answer");
-//	}
-//}
-//
-//var correctAnswers = new Array();
-//function collectCorrectAnswer() {
-//	for(var i=0; i<4; i++){
-//		for(var j=1; j<5; j++){
-//			if (selectedQuestion[i].correct === j){
-//				var answerNum = j.toString();
-//				correctAnswers.push(selectedQuestion[i]['answer'+ answerNum]);
-//				
-//			}
-//		}
-//	}
-//}
-//
-//var COW = new Array();
-//function compareAnswer(questnum) {
-//	if (usersAnswers[questnum] === correctAnswers[questnum]){
-//		COW.push("Correct!");
-//	}else{
-//		COW.push("Wrong!");
-//	}
-//}
+function listenToRows(){
+	for (var j=1; j < results.length+ 1 ; j++){
+gbi('resultsTable').rows[j].addEventListener('mouseenter',function(){
+	this.cells[3].style.display = "table-cell";
+	this.cells[2].style.display = "none";
+})
+gbi('resultsTable').rows[j].addEventListener('mouseleave',function(){
+	this.cells[3].style.display = "none";
+	this.cells[2].style.display = "table-cell";
+})
+	}
+}
