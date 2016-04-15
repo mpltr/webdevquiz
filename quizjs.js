@@ -40,7 +40,7 @@ var selectedQuestion = new Array();
 var results = new Array();
 
 // Server request to pull questions then process functions
-var grabQuestions = new HttpRequest("/questions.txt", importQuestions);
+var grabQuestions = new HttpRequest("questions.txt", importQuestions);
 function importQuestions(grabbed){
 	var parseGrabbed = JSON.parse(grabbed);	
 	question = parseGrabbed;
@@ -58,22 +58,24 @@ function populateSelectedArray(){
         selectedQuestion[i] = question[selectedNumber];
         question[selectedNumber].used = true; // Stops the same question being added twice
         for (var j=1; j <5; j++) {  // loop detects number of correct answer, changes number to  correct answer string.
-            if (selectedQuestion[i].correct === j){
-                selectedQuestion[i].correct = selectedQuestion[i]['answer' + (j.toString())];
+            if (parseInt(selectedQuestion[i].correct) === j){
+                var test = selectedQuestion[i]['answer' + (j.toString())];
+                selectedQuestion[i].correct = test;
+                j = 5;
             }
         }
     }
 }
 //Display Question +
 function displayQuestion(number) {
-	if (number < 5){
-gbi('question').innerText = selectedQuestion[number].quest;
-gbi('answerOne').innerText = selectedQuestion[number].answer1;
-gbi('answerTwo').innerText = selectedQuestion[number].answer2;
-gbi('answerThree').innerText = selectedQuestion[number].answer3;
-gbi('answerFour').innerText = selectedQuestion[number].answer4;
+	if (number < 20){
+gbi('question').innerHTML = selectedQuestion[number].quest;
+gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
+gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
+gbi('answerThree').innerHTML = selectedQuestion[number].answer3;
+gbi('answerFour').innerHTML = selectedQuestion[number].answer4;
 var stack = gbc('stack');
-stack[number].style.color = "red";
+stack[number].style.color = "#ff2d2d";
 if (number >= 1){
     stack[number -1].style.color = "grey";
 }
@@ -122,20 +124,26 @@ var currentQuestionNumber = 0;
 function storeResult (callback) {
     var detectedAnswer = gbc('answerHighlighted')[0];
     if(detectedAnswer){   
-        var userAns = detectedAnswer.innerText;                                 //| Set properties
+        var userAns = detectedAnswer.innerHTML;                                 //| Set properties
         var correctAns = selectedQuestion[currentQuestionNumber].correct;   //| for creating 
-        var result = function(){                    
-            if (userAns === correctAns){
-                return "Correct!";
-            } else {
-                return "Wrong";
-            }
-        }                                      //| answer object
+        var result = correctOrWrong(userAns, correctAns);
+            
+            
+                                             //| answer object
         results[currentQuestionNumber] = new answers(userAns, correctAns, result);
         callback(currentQuestionNumber + 1);
         currentQuestionNumber++;
     }else{
         alert("Please select an answer");
+    }
+}
+
+// compare answers and generate result
+function correctOrWrong(uA, cA){                    
+    if (uA === cA){
+        return "Correct!";
+    } else {
+        return "Wrong!";
     }
 }
 
@@ -149,14 +157,21 @@ function displayResults(){
             lastRow.insertCell(0);
             lastRow.insertCell(1);
             lastRow.insertCell(2);
-
-            lastRow.cells[0].innerHTML = results[i].userAnswer;
-            lastRow.cells[1].innerHTML = results[i].correctAnswer;
-            lastRow.cells[2].innerHTML = results[i].result;
-                
-                    
-                    
+            lastRow.insertCell(3);
+            
+            lastRow.cells[0].innerHTML = i+1;
+            lastRow.cells[1].innerHTML = results[i].userAnswer;
+            lastRow.cells[2].innerHTML = results[i].correctAnswer;
+            
+            
+            if (results[i].result === "Correct!"){
+                lastRow.className = "correct";
+                lastRow.cells[3].innerHTML = '<img src="correct.png">';  
+            } else {
+                lastRow.className = "wrong";
+                lastRow.cells[3].innerHTML = '<img src="wrong.png">';  
             }
+        }
         
     }
 
