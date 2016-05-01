@@ -1,31 +1,28 @@
-// shortcuts
-function gbi(id) {
-    return document.getElementById(id);
+function get(url) {
+    return new Promise(function(resolve, reject){
+        var req = new XMLHttpRequest();
+        req.open('GET', url);
+        
+        req.onload = function() {
+            if (req.status == 200){
+                resolve(req.response);
+            } else {
+                reject(Error(req.statusText));
+            }
+        };
+        req.onerror = function() {
+            reject(Error("Network Error"));
+        }
+    
+        req.send();
+    });
 }
-function gbc(cl) {
-    return document.getElementsByClassName(cl);
+
+// Server request to pull questions then process functions
+function importQuestions(grabbed){
+	var parseGrabbed = JSON.parse(grabbed);	
+	Array.prototype.push.apply(question, parseGrabbed);
 }
-function gbt(ta) {
-    return document.getElementsByTagName(ta);
-}
-function HttpRequest(url, callback) {
-	this.request = new XMLHttpRequest();
-	this.request.open("GET", url);
-	var tempRequest = this.request;
-	function reqReadyStateChange() {
-		if (tempRequest.readyState == 4) {
-			if (tempRequest.status == 200) {
-				callback(tempRequest.responseText);
-			} else {
-				alert("An error occurred trying to contact the server.");
-			}
-		}
-	}
-	this.request.onreadystatechange = reqReadyStateChange;
-}
-HttpRequest.prototype.send = function () {
-	this.request.send(null);
-};
 
 // Answers Object
 function answers(ua, ca, re){
@@ -33,25 +30,74 @@ function answers(ua, ca, re){
     this.correctAnswer = ca;
     this.result = re;
 }
-
 // Arrays
 var question = new Array();
 var selectedQuestion = new Array();
 var results = new Array();
 
-// Server request to pull questions then process functions
-var grabQuestions = new HttpRequest("questions.txt", importQuestions);
-function importQuestions(grabbed){
-	var parseGrabbed = JSON.parse(grabbed);	
-	question = parseGrabbed;
-	populateSelectedArray();
-	displayQuestion(0);            //Display the first question
+var usersNumberOfQuestions = 0;
+// Selection Page
+// Highlighting
+var topicLength = gbc('topic').length;
+for (var i = 0; i < topicLength; i++){
+    gbc('topic')[i].addEventListener("click", function(){
+        if (this.className === "topic"){
+        this.className = "topicHighlighted";
+        } else {
+            this.className = "topic";
+        }
+    })
 }
-grabQuestions.send();
+var numQuestLength = gbc('numQuest').length;
+for (var i = 0; i < numQuestLength; i++){
+    gbc('numQuest')[i].addEventListener("click", function(){
+        addHighlight('numQuest', 'numQuestHighlighted', this);
+    })
+};
+
+gbi('confirm').addEventListener("click", function(){
+    var topics = new Array();
+        if (gbc('topicHighlighted')[0]){
+            if(gbc('numQuestHighlighted')[0]){
+                var topicHiglightedLength = gbc('topicHighlighted').length;
+                for (var i = 0; i < topicHiglightedLength; i++){
+                    topics[i] = gbc('topicHighlighted')[i].innerHTML.toLowerCase() + '.txt';
+                }
+                var topicPromises = topics.map(get);
+                var sequence = Promise.resolve();
+                topicPromises.forEach(function(url){
+                    url.then(function(gotten){
+                    var tempArray = JSON.parse(gotten);
+                    Array.prototype.push.apply(question, tempArray);
+                }).catch(function(){
+                        alert('file could not be loaded');
+                    })
+
+                }) 
+                Promise.all(topicPromises).then(function(urls){
+                    var numofQuests = parseInt(gbc('numQuestHighlighted')[0].innerHTML);
+                    populateSelectedArray(numofQuests);
+                    gbi('selection').style.display = 'none';
+                    gbi('questionMaster').style.display = 'block';
+                    createStacks(numofQuests);
+                    displayQuestion(0);
+                }).catch(function(){
+                    alert("one or more of the files could not be loaded");
+                })
+            } else {
+                alert('Please select the number of questions!');
+            }
+        }else {
+        alert("Please select at least one topic!");
+        return;
+    }
+})
+
 
 // Populate Selected Array
-function populateSelectedArray(){
-    for (var i =0; i < 20; i++) { 
+function populateSelectedArray(numOfQuests){
+    usersNumberOfQuestions = numOfQuests;
+    for (var i =0; i < numOfQuests; i++) { 
         do {
             selectedNumber = Math.floor(Math.random()*question.length);
         } while (question[selectedNumber].used === true);
@@ -68,7 +114,7 @@ function populateSelectedArray(){
 }
 //Display Question +
 function displayQuestion(number) {
-	if (number < 20){ // Change to change number of questions before going to results page
+	if (number < usersNumberOfQuestions){ // Change to change number of questions before going to results page
 gbi('question').innerHTML = selectedQuestion[number].quest;
 gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
 gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
@@ -90,12 +136,20 @@ clearAnswer();
 }
 
 // Create question Number container (STACKS)
-for (var i=1; i < 21; i++) {
+function createStacks(numQuests){
+    var reqWidth = (200/numQuests);
+    while (reqWidth*(Math.ceil(numQuests/2)) > 100) {
+        reqWidth -= 0.1;
+    }
+    for (var i=1; i < numQuests + 1; i++) {
 	var testDiv = document.createElement("div");
-	testDiv.appendChild(document.createTextNode('Q' + i));
+	testDiv.appendChild(document.createTextNode('Q' + i));    
+    testDiv.style.width = reqWidth + '%';
+//    testDiv.style.fontSize = (5000/reqWidth) + '%'; //need to look at!
 	gbi('questionStack').appendChild(testDiv);
 	testDiv.className = "stack";
 	testDiv.id = ("Q" + i)
+}
 }
 
 // Clear answer
