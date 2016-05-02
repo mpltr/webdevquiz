@@ -61,7 +61,7 @@ gbi('confirm').addEventListener("click", function(){
             if(gbc('numQuestHighlighted')[0]){
                 var topicHiglightedLength = gbc('topicHighlighted').length;
                 for (var i = 0; i < topicHiglightedLength; i++){
-                    topics[i] = gbc('topicHighlighted')[i].innerHTML.toLowerCase() + '.txt';
+                    topics[i] = 'questions/'+ gbc('topicHighlighted')[i].innerHTML.toLowerCase() + '.txt';
                 }
                 var topicPromises = topics.map(get);
                 var sequence = Promise.resolve();

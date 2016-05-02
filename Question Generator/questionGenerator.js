@@ -29,7 +29,7 @@ gbi('create').addEventListener('click', function(){
     var fourthAnswerSplit = gbi('answerFour').value.split('\n');
     var correctAnswerSplit = gbi('correct').value.split('\n');
     
-    for (var i = 0; i < questionSplit.length - 1; i++){
+    for (var i = 0; i < questionSplit.length; i++){
         var qu = questionSplit[i];
         var a1 = firstAnswerSplit[i];
         var a2 = secondAnswerSplit[i];
@@ -38,27 +38,19 @@ gbi('create').addEventListener('click', function(){
         var c1 = correctAnswerSplit[i];
         tempArray[tempArray.length] = new tempQuestion (qu, a1, a2, a3, a4, c1);
     }
-     var stringedTempArr = JSON.stringify(tempArray);
-        gbi('results').innerHTML = stringedTempArr;
+    var data = JSON.stringify(tempArray);
+    var dest = gbi('topicSelect').value;
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			alert("Exported!")
+		}
+	}
+	xmlhttp.open("GET","addQuestions.php?data="+data+"&dest="+dest,true);
+	//Must add this request header to XMLHttpRequest request for POST
+	xmlhttp.send();
 })
 
 
 
-
-
-
-
-// OLD get questions
-//gbi('create').addEventListener('click', function(){
-//	var qu = gbi('question').value;
-//	var a1 = gbi('answerOne').value;
-//	var a2 = gbi('answerTwo').value;
-//	var a3 = gbi('answerThree').value;
-//	var a4 = gbi('answerFour').value;
-//	var c1 = gbi('correct').value;
-//	tempArray[tempArray.length] = new tempQuestion (qu, a1, a2, a3, a4, c1);
-//	var stringedTempArr = JSON.stringify(tempArray);
-//	gbi('results').innerHTML = stringedTempArr;
-//    
-//})
 
