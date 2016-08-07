@@ -1,3 +1,7 @@
+/////////////////
+/// Shortcuts ///
+/////////////////
+
 function gbi(id) {
     return document.getElementById(id);
 } //Get by ID Shortcut
@@ -6,6 +10,9 @@ function gbc(cl) {
 } //Get by Class Shortcut
 function gbt(tag) {
     return document.getElementsByTagName(tag);
+} //Get by Tagname Shortcut
+function gbn(name) {
+    return document.getElementsByName(name);
 } //Get by Tagname Shortcut
 function caps(string) {
     if(string == ""){
@@ -35,6 +42,11 @@ function HttpRequest(url, callback) {
 HttpRequest.prototype.send = function () {
     this.request.send(null);
 };
+
+//////////////
+/// Tables ///
+//////////////
+
 function createTableFromObjectArray(arrayName, tableName, appendTo){
     var createdTable = document.createElement('table');
     createdTable.id = tableName;
@@ -152,3 +164,67 @@ function monitorTopRow(tableID, callFunction) {
         })
     }
 } //Monitor top row of table with tableID and process callFunction when cell is clicked
+
+///////////////////////
+/// Text Processors ///
+///////////////////////
+
+// Cleans a forms text inputs so they are compatible with php scripts. Requires a trigger!
+function CleanForm(formIdentifier){
+    var no_of_children = formIdentifier.childElementCount;
+    for (var i = 0; i < no_of_children; i++){
+        var target       = formIdentifier.children[i].type;
+        var target_value = formIdentifier.children[i].value;
+        if(target == "text" || target == "textarea"){
+            target_value = target_value.replace(/[\u2018\u2019]/g, "'");      
+        }
+        formIdentifier.children[i].value = target_value;
+    }    
+}
+// TESTING - Cleans pasted content before putting it in a field. 
+function CleanPastedContentOf(element){
+    element.onpaste = function(e){
+        var pasted = undefined;
+        if (window.clipboardData && window.clipboardData.getData) { // IE
+            pasted = window.clipboardData.getData('Text');
+        } else if (e.clipboardData && e.clipboardData.getData) {
+            pasted = e.clipboardData.getData('text/plain');
+        }
+        pasted = pasted.replace(/[\u2018\u2019]/g, "'");
+        element.value = pasted;
+        return false;
+    }
+}
+// Returns the text the user currently has selected
+function getSelectedText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+//replaces <br> tags with new lines (for loading forms from JSON)
+function remove_tags(string){
+    string = string.replace(/(<br>|<br \/>)/gi, '\n');
+//    string = string.replace(/\&emsp\;/gi, '   ');
+    return string;
+}
+    
+
+//////////////////
+/// Validators ///
+//////////////////
+        
+//Validates an email address using RegExp
+function validateEmail(emailField){
+    var reg = /^(?:[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+\.)*[\w\!\#\$\%\&\'\*\+\-\/\=\?\^\`\{\|\}\~]+@(?:(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!\.)){0,61}[a-zA-Z0-9]?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9\-](?!$)){0,61}[a-zA-Z0-9]?)|(?:\[(?:(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}(?:[01]?\d{1,2}|2[0-4]\d|25[0-5])\]))$/;
+    if (reg.test(emailField.value) == false) 
+    {
+        return false;
+    } else {
+        return true;
+    }
+}
+
