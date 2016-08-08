@@ -47,7 +47,7 @@ HttpRequest.prototype.send = function () {
 /// Tables ///
 //////////////
 
-function createTableFromObjectArray(arrayName, tableName, appendTo){
+function createTableFromObjectArray(arrayName, tableName, appendToID){
     var createdTable = document.createElement('table');
     createdTable.id = tableName;
     createdTable.insertRow(0);

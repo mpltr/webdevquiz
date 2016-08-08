@@ -168,6 +168,9 @@ function clearAnswer(){
             gbc('answerHighlighted')[j].className = "answer";
         }
     }
+    if(gbi('type_answer')){
+        gbi('type_answer').value = "";
+    }
 }
 
 // Click Answer Event Listener

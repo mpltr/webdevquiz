@@ -5,13 +5,14 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet.css">
 	</head>
 	<title></title>
-	<body>
-        <textarea rows="30" cols="100" id="question" placeholder="Questions"></textarea>
+	<body id="body">
+        <textarea rows="30" cols="10" id="type" placeholder="Type"></textarea>
+        <textarea rows="30" cols="90" id="question" placeholder="Questions"></textarea>
 		<textarea rows="30" cols="30" placeholder="Answer1" id="answerOne" ></textarea>
 		<textarea rows="30" cols="30" placeholder="Answer2" id="answerTwo"></textarea>
 		<textarea rows="30" cols="30" placeholder="Answer3" id="answerThree"></textarea>
 		<textarea rows="30" cols="30" placeholder="Answer4" id="answerFour"></textarea>
-		<textarea rows="30" cols="10" placeholder="Correct answer" id="correct"></textarea><p></p>
+		<textarea rows="30" cols=".0" placeholder="Correct answer" id="correct"></textarea><p></p>
         <select id='topicSelect' name='topicSelect'>
         <option>html</option>
         <option>css</option>
@@ -19,9 +20,11 @@
         <option>jquery</option>
         <option>github</option>
         <option>php</option>
+        <option>test</option>
         </select>
 		<input type="button" id="create" value="create"><p>
 		<div id="results"></div>
+		<script type="text/javascript" src="../sec.JS"></script>
 		<script type="text/javascript" src="questionGenerator.js"></script>
 	</body>
 </html>
