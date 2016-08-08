@@ -36,7 +36,8 @@ var selectedQuestion = new Array();
 var results = new Array();
 
 var usersNumberOfQuestions = 0;
-// Selection Page
+
+// Selection Page //
 // Highlighting
 var topicLength = gbc('topic').length;
 for (var i = 0; i < topicLength; i++){
@@ -103,7 +104,7 @@ function populateSelectedArray(numOfQuests){
         } while (question[selectedNumber].used === true);
         selectedQuestion[i] = question[selectedNumber];
         question[selectedNumber].used = true; // Stops the same question being added twice
-        for (var j=1; j <5; j++) {  // loop detects number of correct answer, changes number to  correct answer string.
+        for (var j=1; j <5; j++) {  // loop detects the multiple choice number of correct answer, changes number to  correct answer string.
             if (parseInt(selectedQuestion[i].correct) === j){
                 var test = selectedQuestion[i]['answer' + (j.toString())];
                 selectedQuestion[i].correct = test;
@@ -114,12 +115,20 @@ function populateSelectedArray(numOfQuests){
 }
 //Display Question +
 function displayQuestion(number) {
-	if (number < usersNumberOfQuestions){ // Change to change number of questions before going to results page
-gbi('question').innerHTML = selectedQuestion[number].quest;
-gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
-gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
-gbi('answerThree').innerHTML = selectedQuestion[number].answer3;
-gbi('answerFour').innerHTML = selectedQuestion[number].answer4;
+	if (number < usersNumberOfQuestions){
+        if (selectedQuestion[number].type == "multi"){
+            gbi('answerWrap').style.display = "table";
+            gbi('type_answer').style.display = "none";
+            gbi('question').innerHTML = selectedQuestion[number].quest;
+            gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
+            gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
+            gbi('answerThree').innerHTML = selectedQuestion[number].answer3;
+            gbi('answerFour').innerHTML = selectedQuestion[number].answer4;
+        } else if (selectedQuestion[number].type == "input"){
+            gbi('answerWrap').style.display = "none";
+            gbi('type_answer').style.display = "block";
+            gbi('question').innerHTML = selectedQuestion[number].quest;
+        }
 var stack = gbc('stack');
 stack[number].style.color = "#ff2d2d";
 if (number >= 1){
@@ -177,10 +186,15 @@ gbi('next').addEventListener('click', function(){
 // Create results Object
 var currentQuestionNumber = 0;
 function storeResult (callback) {
-    var detectedAnswer = gbc('answerHighlighted')[0];
+    var detectedAnswer;
+    if (gbc('answerHighlighted')[0]){
+        detectedAnswer = gbc('answerHighlighted')[0].innerHTML;
+    } else if (gbi('type_answer').value !== ""){
+        detectedAnswer = gbi('type_answer').value;
+    }
     if(detectedAnswer){   
-        var userAns = detectedAnswer.innerHTML;                                 //| Set properties
-        var correctAns = selectedQuestion[currentQuestionNumber].correct;   //| for creating 
+        var userAns = detectedAnswer.toLowerCase();                                 //| Set properties
+        var correctAns = selectedQuestion[currentQuestionNumber].correct.toLowerCase();   //| for creating 
         var result = correctOrWrong(userAns, correctAns);
             
             
