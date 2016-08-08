@@ -128,6 +128,7 @@ function displayQuestion(number) {
             gbi('answerWrap').style.display = "none";
             gbi('type_answer').style.display = "block";
             gbi('question').innerHTML = selectedQuestion[number].quest;
+            setTimeout("gbi('type_answer').focus();", 1);
         }
 var stack = gbc('stack');
 stack[number].style.color = "#ff2d2d";
@@ -185,7 +186,12 @@ for (var i =0; i<4; i++){
 gbi('next').addEventListener('click', function(){
     storeResult(displayQuestion); // If result is stored, displayedQuestion 
 })
-
+gbt('body')[0].onkeypress = function(e){
+    var code = e.keyCode;
+    if (code == 13){
+        storeResult(displayQuestion); // If result is stored, displayedQuestion 
+    }
+}
 // Create results Object
 var currentQuestionNumber = 0;
 function storeResult (callback) {
