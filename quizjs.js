@@ -1,7 +1,8 @@
 function get(url) {
     return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();
-        req.open('GET', url);
+        var time = new Date().getTime();
+        req.open('GET', url + '?t=' + time);
         
         req.onload = function() {
             if (req.status == 200){
@@ -113,7 +114,7 @@ function populateSelectedArray(numOfQuests){
         }
     }
 }
-//Display Question +
+//Display Question 
 function displayQuestion(number) {
 	if (number < usersNumberOfQuestions){
         if (selectedQuestion[number].type == "multi"){
@@ -202,12 +203,13 @@ function storeResult (callback) {
         detectedAnswer = gbi('type_answer').value;
     }
     if(detectedAnswer){   
-        var userAns = detectedAnswer.toLowerCase();                                 //| Set properties
-        var correctAns = selectedQuestion[currentQuestionNumber].correct.toLowerCase();   //| for creating 
-        var result = correctOrWrong(userAns, correctAns);
-            
-            
-                                             //| answer object
+        var userAns = detectedAnswer.toLowerCase();
+        userAnsCleaned =  userAns.replace(/\"/gi, "'");                                
+        var correctAns = selectedQuestion[currentQuestionNumber].correct.toLowerCase();   
+        var result = correctOrWrong(userAnsCleaned, correctAns);
+        if(result == "Correct!"){
+            correctAns = userAns;
+        }
         results[currentQuestionNumber] = new answers(userAns, correctAns, result);
         callback(currentQuestionNumber + 1);
         currentQuestionNumber++;
@@ -270,3 +272,8 @@ gbi('resultsTable').rows[j].addEventListener('mouseleave',function(){
 })
 	}
 }
+
+// Play again
+gbi('playagain').addEventListener("click", function(){
+  location.reload();
+})
