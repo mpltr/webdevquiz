@@ -1,3 +1,4 @@
+// Get question files
 function get(url) {
     return new Promise(function(resolve, reject){
         var req = new XMLHttpRequest();
@@ -19,11 +20,13 @@ function get(url) {
     });
 }
 
+
 // Server request to pull questions then process functions
 function importQuestions(grabbed){
 	var parseGrabbed = JSON.parse(grabbed);	
 	Array.prototype.push.apply(question, parseGrabbed);
 }
+
 
 // Answers Object
 function answers(ua, ca, re){
@@ -31,12 +34,16 @@ function answers(ua, ca, re){
     this.correctAnswer = ca;
     this.result = re;
 }
+
+
 // Arrays
 var question = new Array();
 var selectedQuestion = new Array();
 var results = new Array();
 
 var usersNumberOfQuestions = 0;
+
+
 
 // Selection Page //
 // Highlighting
@@ -57,6 +64,8 @@ for (var i = 0; i < numQuestLength; i++){
     })
 };
 
+
+// Listen to the confirm button for press then prepare the quiz
 gbi('confirm').addEventListener("click", function(){
     var topics = new Array();
         if (gbc('topicHighlighted')[0]){
@@ -96,7 +105,7 @@ gbi('confirm').addEventListener("click", function(){
 })
 
 
-// Populate Selected Array
+// Populate Selected Questions Array which will be used in the quiz
 function populateSelectedArray(numOfQuests){
     usersNumberOfQuestions = numOfQuests;
     for (var i =0; i < numOfQuests; i++) { 
@@ -114,17 +123,20 @@ function populateSelectedArray(numOfQuests){
         }
     }
 }
-//Display Question 
+
+
+// Display Question number x
 function displayQuestion(number) {
 	if (number < usersNumberOfQuestions){
         if (selectedQuestion[number].type == "multi"){
+            var ind = function(number){ return '<span class="indicator">' + number + "</span>"};
             gbi('answerWrap').style.display = "table";
             gbi('type_answer').style.display = "none";
             gbi('question').innerHTML = selectedQuestion[number].quest;
-            gbi('answerOne').innerHTML = selectedQuestion[number].answer1;
-            gbi('answerTwo').innerHTML = selectedQuestion[number].answer2;
-            gbi('answerThree').innerHTML = selectedQuestion[number].answer3;
-            gbi('answerFour').innerHTML = selectedQuestion[number].answer4;
+            gbi('answerOne').innerHTML = ind(1) + selectedQuestion[number].answer1;
+            gbi('answerTwo').innerHTML = ind(2) + selectedQuestion[number].answer2;
+            gbi('answerThree').innerHTML = ind(3) + selectedQuestion[number].answer3;
+            gbi('answerFour').innerHTML = ind(4) + selectedQuestion[number].answer4;
         } else if (selectedQuestion[number].type == "input"){
             gbi('answerWrap').style.display = "none";
             gbi('type_answer').style.display = "block";
@@ -146,6 +158,7 @@ clearAnswer();
 
 }
 
+
 // Create question Number container (STACKS)
 function createStacks(numQuests){
     var reqWidth = (200/numQuests);
@@ -163,6 +176,7 @@ function createStacks(numQuests){
 }
 }
 
+
 // Clear answer
 function clearAnswer(){
     for (var j=0; j<4; j++){
@@ -175,6 +189,8 @@ function clearAnswer(){
     }
 }
 
+
+
 // Click Answer Event Listener
 for (var i =0; i<4; i++){
 	gbc('answer')[i].addEventListener('click', function(){
@@ -185,14 +201,53 @@ for (var i =0; i<4; i++){
 
 //Next Button Event Listener
 gbi('next').addEventListener('click', function(){
+    $(this).addClass()
     storeResult(displayQuestion); // If result is stored, displayedQuestion 
 })
+
+//Keyboard Event Listeners
+//Enter
 gbt('body')[0].onkeypress = function(e){
     var code = e.keyCode;
+    //Enter
     if (code == 13){
         storeResult(displayQuestion); // If result is stored, displayedQuestion 
     }
+    //Number 1
+    else if (code == 49 || code == 97){
+        if(gbi('answerWrap').style.display !== "none"){
+            clearAnswer();
+            gbc('answer')[0].className = "answerHighlighted";
+        }
+    }
+    //Number 2
+    else if (code == 50 || code == 98){
+        if(gbi('answerWrap').style.display !== "none"){
+            clearAnswer();
+            gbc('answer')[1].className = "answerHighlighted";
+        }
+    }
+    //Number 3
+    else if (code == 51 || code == 99){
+        if(gbi('answerWrap').style.display !== "none"){
+            clearAnswer();
+            gbc('answer')[2].className = "answerHighlighted";
+        }
+    }
+    //Number 4
+    else if (code == 52 || code == 100){
+        if(gbi('answerWrap').style.display !== "none"){
+            clearAnswer();
+            gbc('answer')[3].className = "answerHighlighted";
+        }
+    }else {
+        return true;
+    }
 }
+
+
+
+
 // Create results Object
 var currentQuestionNumber = 0;
 function storeResult (callback) {
@@ -217,6 +272,7 @@ function storeResult (callback) {
         alert("Please select an answer");
     }
 }
+
 
 // compare answers and generate result
 function correctOrWrong(uA, cA){                    
@@ -260,6 +316,8 @@ function displayResults(){
 	var totalCorrect = totalQuestions - totalWrong;
 }
 
+
+// Hover to show correct answer
 function listenToRows(){
 	for (var j=1; j < results.length+ 1 ; j++){
 gbi('resultsTable').rows[j].addEventListener('mouseenter',function(){

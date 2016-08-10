@@ -152,12 +152,33 @@ html, body {
     border: solid;
     border-color: aliceblue;
     border-width: 1px;
+    position: relative;
 }
 .answer:hover, .answerHighlighted, #question {
     cursor: pointer;
 }
 .answerHighlighted {
 	background-color: #77cc6c;
+}
+.answer > span {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 210%;
+    font-weight: bold;
+    color: #FF9E40;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.1);
+}
+.answerHighlighted > span {
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    font-size: 210%;
+    font-weight: bold;
+    color: #66AF5C;
+    text-shadow: 10px 10px 16px rgba(255,255,255,0.2);
 }
 #buttonWrap {
     height: 20%;
@@ -182,10 +203,31 @@ html, body {
     align-items: center;
     justify-content: center;
     font-size: 300%;
+    box-shadow: 3px 5px #6f6f6f;
+}
+.next-pressed{
+    box-shadow: 1px 1px #464646;
+    top: calc(20% + 4px);
+    right: -2px;
+    width: 20%;
+    height: 100%;
+    background-color: brown;
 }
 #next:hover {
 	background-color: #db5050;
    
+}
+#next > span {
+    font-size: 50%;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    color: #2e2e2e;
+    text-shadow: 2px 2px 6px rgba(255,255,255,0.1);
+}
+#next:hover > span {
+    color: #ba3333;
 }
 #questionStack {
     height: 30%;
