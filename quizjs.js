@@ -64,10 +64,9 @@ for (var i = 0; i < numQuestLength; i++){
     })
 };
 
-
-// Listen to the confirm button for press then prepare the quiz
-gbi('confirm').addEventListener("click", function(){
-    var topics = new Array();
+// Confirm Function
+function confirm(){
+     var topics = new Array();
         if (gbc('topicHighlighted')[0]){
             if(gbc('numQuestHighlighted')[0]){
                 var topicHiglightedLength = gbc('topicHighlighted').length;
@@ -102,6 +101,11 @@ gbi('confirm').addEventListener("click", function(){
         alert("Please select at least one topic!");
         return;
     }
+}
+
+// Listen to the confirm button for press then prepare the quiz
+gbi('confirm').addEventListener("click", function(){
+    confirm();
 })
 
 
@@ -199,10 +203,16 @@ for (var i =0; i<4; i++){
 	})
 }
 
+// Click next function
+function nextClicked(){
+    gbi('next').className = "next-pressed";
+    gbi('enter').style.color = "#ba3333";
+    setTimeout("gbi('next').className = 'next-start'; gbi('enter').style.color = '#2e2e2e'", 100);
+    setTimeout("storeResult(displayQuestion);", 110); // If result is stored, displayedQuestion 
+}
 //Next Button Event Listener
 gbi('next').addEventListener('click', function(){
-    $(this).addClass()
-    storeResult(displayQuestion); // If result is stored, displayedQuestion 
+    nextClicked();
 })
 
 //Keyboard Event Listeners
@@ -211,7 +221,12 @@ gbt('body')[0].onkeypress = function(e){
     var code = e.keyCode;
     //Enter
     if (code == 13){
-        storeResult(displayQuestion); // If result is stored, displayedQuestion 
+        if(gbi('selection').style.display !== "none"){
+            confirm();
+        } else if(gbi('questionMaster').style.display !== "none"){
+            nextClicked();
+        }
+
     }
     //Number 1
     else if (code == 49 || code == 97){

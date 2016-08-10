@@ -185,25 +185,23 @@ html, body {
     position: relative;
     background-color: #d9e8ff;
 }
-.button {
-    width: 20%;
-    height: 100%;
-    background-color: brown;
-}
 #next {
     display: flex;
     height: 60%;
-    top: 20%;
+    width: 20%;
     position: absolute;
-    right: 0px;
-    background-color: #383838;
-    color: #d9e8ff;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 300%;
+}
+.next-start {
+    top: 20%;
+    right: 0px;
     box-shadow: 3px 5px #6f6f6f;
+    background-color: #383838;
+    color: #d9e8ff;
 }
 .next-pressed{
     box-shadow: 1px 1px #464646;
@@ -211,11 +209,12 @@ html, body {
     right: -2px;
     width: 20%;
     height: 100%;
-    background-color: brown;
+    background-color: #db5050;
+    color: #d9e8ff;
 }
 #next:hover {
 	background-color: #db5050;
-   
+    color: #d9e8ff;
 }
 #next > span {
     font-size: 50%;
