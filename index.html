@@ -9,22 +9,38 @@
     <title></title>
     <body>
        <div id="up"></div>
-       <div id="down"></div>
+<!--       <div id="down"></div>-->
         <div id="centerPanel">
 			<div id="selection">
                 <div id="welcome">
                     <h1>Welcome to the Web Dev Quiz!</h1>
+                    <div class="down" id="down1"></div>
                 </div>
 				<div id="topicContainer">
+<!--                    <div class="up" id="up1"></div>-->
                     <div id="topicCard">
+<!--
                         <div class="title">
                              Topic Selector<br><br>
-<!--                             2. Select the amount of -->
-                          
-                           
-<!--                            <img src="images/topic.gif" />-->
+                        </div>
+-->
+                        <div id="numQuests">
+                            <div class="title">
+                               Select the number of questions...
+                            </div>
+                            <div class="numQuest">1</div>
+                            <div class="numQuest">10</div>
+                            <div class="numQuest">15</div>
+                            <div class="numQuest">20</div>
+                            <div class="numQuest">25</div>
+                            <div class="numQuest">30</div>
+                            <div class="numQuest">40</div>
+                            <div class="numQuest">50</div>
+                            <div class="numQuest">75</div>
+<!--                            <div class="numQuest">100</div>-->
                         </div>
                         <div id="topicHolder">
+                           <div class="title">...and some topics:</div>
                             <div class="topic">HTML</div>
                             <div class="topic">CSS</div>
                             <div class="topic">JavaScript</div>
@@ -32,24 +48,30 @@
                             <div class="topic">GitHub</div>
                         </div>
                     </div>
-				</div>
-				<div class="title">
-					Number of Questions
+                    <div class="down" id="down2"></div>
 				</div>
 				<div id="numQuestContainer">
-                    <div class="numQuest">1</div>
-					<div class="numQuest">10</div>
-					<div class="numQuest">15</div>
-					<div class="numQuest">20</div>
-					<div class="numQuest">25</div>
-					<div class="numQuest">30</div>
-					<div class="numQuest">40</div>
-					<div class="numQuest">50</div>
+                    <div id="numQuestCard">
+                       
+                        <div id="instructions">
+                            <h2>Instructions</h2>
+                            <p>
+                            Answer the multiple choice questions by using the 1, 2, 3, and 4 keys and pressing enter to confirm.
+                            </p>
+                            <img src="images/blank-keyboard-keys-md.png" />
+                            <p>
+                            You can also use your mouse!<br><br>
+                            When you see a text box, it's time to type! 
+                            </p>
+                        </div>
+                        
+                    </div>
 				</div>
-                <div id="confirm">
+               <!-- <div id="confirm">
                     Lets Quiz!
-                </div>
+                </div>-->
 			</div>
+<!--
             <div id="questionMaster">
                 <div id="header">
 				</div>
@@ -94,6 +116,7 @@
                 </table>  
                 <input type="button" value="Play Again" id="playagain">          
             </div>
+-->
         </div>
 		<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
         <script type="text/javascript" src="sec.JS"></script>
