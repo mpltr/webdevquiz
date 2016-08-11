@@ -1,3 +1,64 @@
+//window on scroll
+function scroller() {
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var scroll = gbi('centerPanel').scrollTop;
+    var up = gbi('up');
+    var down = gbi('down');
+    if(scroll < h) {
+       up.style.display = "none";
+    } else if(scroll >= h && scroll < (h * 2)) {
+        up.style.display = "block";
+        up.addEventListener("click", function(){
+            smoothScroll(gbi('welcome'));
+    })
+}
+}
+var test = gbi('centerPanel');
+
+test.onscroll = scroller;
+
+
+//Down button 
+//animation
+setInterval('bounce(2)', 10000);
+function bounce(Number){
+    for(var i = 0; i < Number; i++){
+    $('#down').animate({
+        top: '-=100'}, 400);
+    $('#down').animate({
+        top: '+=100'}, 600);
+    }
+}
+//onClick
+var targeter = gbi('topicContainer');
+gbi('down').addEventListener("click", function(){
+    smoothScroll(targeter);
+});
+
+//Smooth scroll function
+function smoothScroll(target){
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+
 // Get question files
 function get(url) {
     return new Promise(function(resolve, reject){
@@ -206,8 +267,7 @@ for (var i =0; i<4; i++){
 // Click next function
 function nextClicked(){
     gbi('next').className = "next-pressed";
-    gbi('enter').style.color = "#ba3333";
-    setTimeout("gbi('next').className = 'next-start'; gbi('enter').style.color = '#2e2e2e'", 100);
+    setTimeout("gbi('next').className = 'next-start';", 100);
     setTimeout("storeResult(displayQuestion);", 110); // If result is stored, displayedQuestion 
 }
 //Next Button Event Listener
@@ -217,7 +277,7 @@ gbi('next').addEventListener('click', function(){
 
 //Keyboard Event Listeners
 //Enter
-gbt('body')[0].onkeypress = function(e){
+gbt('html')[0].onkeypress = function(e){
     var code = e.keyCode;
     //Enter
     if (code == 13){
