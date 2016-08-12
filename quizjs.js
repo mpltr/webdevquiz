@@ -17,14 +17,7 @@ gbi('down1').addEventListener("click", function(){
     var target = gbi('topicContainer');
     smoothScroll(target);
 })
-gbi('down2').addEventListener("click", function(){
-    var target = gbi('numQuestContainer');
-    smoothScroll(target);
-})
-//gbi('up1').addEventListener("click", function(){
-//    var target = gbi('welcome');
-//    smoothScroll(target);
-//})
+
 //Smooth scroll function
 function smoothScroll(target){
     var scrollContainer = target;
@@ -48,21 +41,6 @@ function smoothScroll(target){
     // start scrolling
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
-////event listener got function
-//function scrollto(targetID, goto){
-//    gbi(targetID).addEventListener("click",function(){
-//        var target = gbi(goto);
-//        smoothScroll(target);
-//    })
-//}
-////remove event function
-//function remove(targetID, dontgoto){
-//    gbi(targetID).removeEventListener("click",function(){
-//        var target = gbi(dontgoto);
-//        smoothScroll(target);
-//    })
-//}
-
 
 // Get question files
 function get(url) {
@@ -112,18 +90,29 @@ var topicLength = gbc('topic').length;
 for (var i = 0; i < topicLength; i++){
     gbc('topic')[i].addEventListener("click", function(){
         if (this.className === "topic"){
-        this.className = "topicHighlighted";
+            this.className = "topicHighlighted";
         } else {
             this.className = "topic";
         }
+        checkSelections();
     })
 }
 var numQuestLength = gbc('numQuest').length;
 for (var i = 0; i < numQuestLength; i++){
     gbc('numQuest')[i].addEventListener("click", function(){
         addHighlight('numQuest', 'numQuestHighlighted', this);
+        checkSelections();
     })
 };
+
+// Enable / Disable Confirm button check
+function checkSelections(){
+    if(gbc('topicHighlighted')[0] && gbc('numQuestHighlighted')[0]){
+        gbi('confirm').style.backgroundColor = "green";
+    } else {
+         gbi('confirm').style.backgroundColor = "rgba(121, 121, 121, 0.4)";
+    }
+}
 
 //// Confirm Function
 //function confirm(){

@@ -92,6 +92,7 @@ html, body {
     height: 100vh;
     background-color: #f59c45;
     background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+    color: #505050;
 }
 #topicCard {
     height: 70%;
@@ -162,12 +163,12 @@ html, body {
     color: #505050;
 }
 
-#numQuestContainer{
+#confirmation{
     height: 100vh;
     background-color: #4392F1;
     background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
 }
-#numQuestCard {
+#confirmationCard {
     height: 70%;
     width: 90%;
     -webkit-box-shadow: 10px 10px 89px -23px rgba(0,0,0,0.75);
@@ -242,13 +243,13 @@ html, body {
     color: #535353;
     border-right: 2px solid gray;
 }
-#instructions > h2{
+#confirmationCard h2{
     font-size: 4vmin;
     margin: 0;
     padding: 20px 20px 0 20px;
     
 }
-#instructions > p {
+#confirmationCard  p {
     width: auto;
     height: auto;
     padding: 0px 20px 0 20px;
@@ -258,5 +259,23 @@ html, body {
     margin-left: 5%;
 }
 
-
-
+#confirm {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 13%;
+    width: 13%;
+    border-radius: 5px;
+    font-size: 250%;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    line-height: 220%;
+    font-size: 2.2em;
+	padding: 10px;
+	border-radius: 5px;
+    background-color: rgba(121, 121, 121, 0.4);
+    border: 1px solid #646464;
+    box-shadow: 3px 5px #6f6f6f;
+    color: #505050;
+}
