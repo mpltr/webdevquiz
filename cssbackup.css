@@ -132,11 +132,6 @@
     color: #2e2e2e;
     text-shadow: 2px 2px 6px rgba(255,255,255,0.1);
 }
-#questionStack {
-    height: 30%;
-    width: 100%;
-    
-}
 
 /* Results Page */
 .stack {
@@ -244,3 +239,4 @@
     font-size: 150%;
 }
 */
+

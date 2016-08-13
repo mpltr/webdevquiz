@@ -28,7 +28,7 @@
                             <div class="title">
                                Select the number of questions...
                             </div>
-                            <div class="numQuest">1</div>
+                            <div class="numQuest">5</div>
                             <div class="numQuest">10</div>
                             <div class="numQuest">15</div>
                             <div class="numQuest">20</div>
@@ -52,70 +52,56 @@
                         </div>
                     </div>
 <!--                    <div class="down" id="down2"></div>-->
-				</div>
-				<div id="confirmation">
-                    <div id="confirmationCard">
-                        <div id="instructions">
-                            <h2>Instructions</h2>
-                            <p>
-                            Answer the multiple choice questions by using the 1, 2, 3, and 4 keys and pressing enter to confirm.
-                            </p>
-                            <img src="images/blank-keyboard-keys-md.png" />
-                            <p>
-                            You can also use your mouse!<br><br>
-                            When you see a text box, it's time to type! 
-                            </p>
+                </div>
+                <div id="questionMaster">
+                    <div id="header">
+                    </div>
+                    <div id="questionWrap">
+                        <div id="question">
+yup
                         </div>
-                        
                     </div>
-				</div>
-			</div>
-<!--
-            <div id="questionMaster">
-                <div id="header">
-				</div>
-                <div id="questionWrap">
-                    <div id="question">
-                        
+                    <table id="answerWrap" cellspacing="35">
+                        <tr>
+                            <td class="answer" id="answerOne">
+                                <span class="indicator">1</span>
+                            </td>
+                            <td class="answer" id="answerTwo">
+                                <span class="indicator">2</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="answer" id="answerThree">
+                                <span class="indicator">3</span>
+                            </td>
+                            <td class="answer" id="answerFour">
+                                <span class="indicator">4</span>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="typeWrap">
+                        <input type="text" id="type_answer">
                     </div>
-                </div>
-                <table id="answerWrap" cellspacing="0">
-                    <tr>
-                        <td class="answer" id="answerOne">
-                            <span class="indicator">1</span>
-                        </td>
-                        <td class="answer" id="answerTwo">
-                            <span class="indicator">2</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="answer" id="answerThree">
-                            <span class="indicator">3</span>
-                        </td>
-                        <td class="answer" id="answerFour">
-                            <span class="indicator">4</span>R
-                        </td>
-                    </tr>
-                </table>
-                <input type="text" id="type_answer">
-                <div id="buttonWrap">
-                    <a href="#"><div id="next" class="next-start"><span id="enter" class="indicator">ENTER</span>NEXT</div></a>            
-                </div>
-                <div id="questionStack">
 
+                    <div id="buttonWrap">
+                        <a href="#"><div id="next" class="next-start"><span id="enter" class="indicator">ENTER</span>NEXT</div></a>
+                    </div>
+                    <div id="questionStack">
+
+                    </div>
+                </div>
+                <div id="results">
+                    <table id="resultsTable">
+                        <tr id="tableHeader">
+                            <td colspan="2">Question</td>
+                            <td>Your Answer<h6>Hover for correct answer</h6></td>
+
+                        </tr>
+
+                    </table>
+                    <input type="button" value="Play Again" id="playagain">
                 </div>
             </div>
-            <div id="results">
-                <table id="resultsTable">
-                    <tr id="tableHeader">
-                        <td colspan="2">Question<h6>Hover for correct answer</h6></td>
-                        <td>Answer</td>
-                    </tr>
-                
-                </table>  
-                <input type="button" value="Play Again" id="playagain">          
-            </div>
--->
         </div>
 		<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
         <script type="text/javascript" src="sec.JS"></script>
