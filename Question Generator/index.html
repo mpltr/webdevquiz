@@ -6,13 +6,16 @@
 	</head>
 	<title></title>
 	<body id="body">
-        <textarea rows="30" cols="10" id="type" placeholder="Type"></textarea>
-        <textarea rows="30" cols="90" id="question" placeholder="Questions"></textarea>
-		<textarea rows="30" cols="30" placeholder="Answer1" id="answerOne" ></textarea>
-		<textarea rows="30" cols="30" placeholder="Answer2" id="answerTwo"></textarea>
-		<textarea rows="30" cols="30" placeholder="Answer3" id="answerThree"></textarea>
-		<textarea rows="30" cols="30" placeholder="Answer4" id="answerFour"></textarea>
-		<textarea rows="30" cols=".0" placeholder="Correct answer" id="correct"></textarea><p></p>
+        <select id="type" placeholder="Type">
+            <option>multi</option>
+            <option>input</option>    
+        </select>
+        <input id="question" placeholder="Question" />
+		<input  placeholder="Answer1" id="answerOne" />
+		<input  placeholder="Answer2" id="answerTwo" />
+		<input  placeholder="Answer3" id="answerThree" />
+		<input  placeholder="Answer4" id="answerFour" />
+		<input  placeholder="Correct answer" id="correct" /><p></p>
         <select id='topicSelect' name='topicSelect'>
         <option>html</option>
         <option>css</option>

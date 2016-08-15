@@ -5,15 +5,11 @@ setInterval('bounce(2)', 2000);
 function bounce(Number) {
     for (var i = 0; i < Number; i++) {
         $('.down').animate({
-            top: '-=30'
+            bottom: '+=30px'
         }, 1000);
         $('.down').animate({
-            top: '+=30'
+            bottom: '-=30px'
         }, 1000);
-        //    $('.up').animate({
-        //        top: '+=30'}, 1000);
-        //    $('.up').animate({
-        //        top: '-=30'}, 1000);
     }
 }
 gbi('down1').addEventListener("click", function () {
