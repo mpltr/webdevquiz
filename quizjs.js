@@ -89,6 +89,8 @@ var results = new Array();
 var usersNumberOfQuestions = 0;
 
 // Selection Page //
+// Disable confirm button by default
+gbi('confirm').disable = true;
 // Highlighting
 var topicLength = gbc('topic').length;
 for (var i = 0; i < topicLength; i++) {
@@ -98,24 +100,70 @@ for (var i = 0; i < topicLength; i++) {
         } else {
             this.className = "topic";
         }
-        checkSelections();
+        var precheckAns = precheck();
     })
 }
 var numQuestLength = gbc('numQuest').length;
 for (var i = 0; i < numQuestLength; i++) {
     gbc('numQuest')[i].addEventListener("click", function () {
         addHighlight('numQuest', 'numQuestHighlighted', this);
-        checkSelections();
+        var precheckAns = precheck();
     })
 };
 
 // Enable / Disable Confirm button check
-function checkSelections() {
+function confirmButtonControl(enoughQuestions) {
+
     if (gbc('topicHighlighted')[0] && gbc('numQuestHighlighted')[0]) {
-        gbi('confirm').style.cssText += ';' + 'background-color: #77cc6c; cursor: pointer; opacity:1;';
+        if (enoughQuestions == true) {
+            gbi('confirm').style.cssText += ';' + 'background-color: #77cc6c; cursor: pointer; opacity:1;';
+            gbi('confirm').onclick = confirm;
+            gbi('questionWarning').style.visibility = 'hidden';
+        } else {
+            gbi('confirm').style.cssText += ';' + 'background-color: rgba(121, 121, 121, 0.4); cursor: not-allowed; opacity: 0.5;';
+            gbi('confirm').onclick = null;
+            gbi('questionWarning').style.visibility = 'visible';
+        }
     } else {
         gbi('confirm').style.cssText += ';' + 'background-color: rgba(121, 121, 121, 0.4); cursor: not-allowed; opacity: 0.5;';
+        gbi('confirm').onclick = null;
+        gbi('questionWarning').style.visibility = 'hidden';
     }
+}
+
+// precheck number of questions function to allow lets quiz button to light up
+function precheck() {
+    var checkTopics = [];
+    var checkArray = new Array();
+    var topicHiglightedLength = gbc('topicHighlighted').length;
+    for (var i = 0; i < topicHiglightedLength; i++) {
+        checkTopics[i] = 'questions/' + gbc('topicHighlighted')[i].innerHTML.toLowerCase() + '.txt';
+    }
+    var topicPromises = checkTopics.map(get);
+    var sequence = Promise.resolve();
+    topicPromises.forEach(function (url) {
+        url.then(function (gotten) {
+            var preTempArray = JSON.parse(gotten);
+            Array.prototype.push.apply(checkArray, preTempArray);
+        }).catch(function () {
+            alert(' a file could not be loaded');
+        })
+
+    })
+    Promise.all(topicPromises).then(function (urls) {
+        var selectedNumber = parseInt(gbc('numQuestHighlighted')[0].innerHTML);
+        var availableQuests = checkArray.length;
+        if (selectedNumber <= availableQuests) {
+            var EQ = true;
+            confirmButtonControl(EQ);
+        } else {
+            var EQ = false;
+            confirmButtonControl(EQ);
+        }
+    }).catch(function () {
+        return;
+    })
+    return;
 }
 
 // Confirm Function
@@ -164,12 +212,6 @@ function confirm() {
     }
 }
 
-// Listen to the confirm button for press then prepare the quiz
-gbi('confirm').addEventListener("click", function () {
-    confirm();
-})
-
-
 // Populate Selected Questions Array which will be used in the quiz
 function populateSelectedArray(numOfQuests) {
     usersNumberOfQuestions = numOfQuests;
@@ -208,7 +250,7 @@ function displayQuestion(number) {
             gbi('typeWrap').style.display = "flex";
             gbi('question').innerHTML = selectedQuestion[number].quest;
             // For the first question, need to wait for page animation to finish before focusing on the type_answer box. focus() has a bug which requires the setTimeout function to be set!
-            if (number == 0){
+            if (number == 0) {
                 setTimeout("gbi('type_answer').focus();", 700);
             } else {
                 setTimeout("gbi('type_answer').focus();", 1);
@@ -368,54 +410,54 @@ function correctOrWrong(uA, cA) {
 }
 
 // Display the Results
-function displayResults(){
-        for(var i = 0; i < results.length; i++){
-            gbi("resultsTable").insertRow(-1);
-            var rows = gbi("resultsTable").rows;
-            var lastRow = rows[rows.length - 1];
-            lastRow.className += " tableRow";
-            lastRow.insertCell(0);
-            lastRow.insertCell(1);
-            lastRow.insertCell(2);
-            lastRow.insertCell(3);
-			lastRow.insertCell(4);
+function displayResults() {
+    for (var i = 0; i < results.length; i++) {
+        gbi("resultsTable").insertRow(-1);
+        var rows = gbi("resultsTable").rows;
+        var lastRow = rows[rows.length - 1];
+        lastRow.className += " tableRow";
+        lastRow.insertCell(0);
+        lastRow.insertCell(1);
+        lastRow.insertCell(2);
+        lastRow.insertCell(3);
+        lastRow.insertCell(4);
 
-            lastRow.cells[0].innerHTML = i+1;
-			lastRow.cells[1].innerHTML = selectedQuestion[i].quest;
-			lastRow.cells[2].innerHTML = results[i].userAnswer;
-			lastRow.cells[3].innerHTML = results[i].correctAnswer;
-			lastRow.cells[3].style.display = "none";
-			lastRow.cells[3].className = "correct";
+        lastRow.cells[0].innerHTML = i + 1;
+        lastRow.cells[1].innerHTML = selectedQuestion[i].quest;
+        lastRow.cells[2].innerHTML = results[i].userAnswer;
+        lastRow.cells[3].innerHTML = results[i].correctAnswer;
+        lastRow.cells[3].style.display = "none";
+        lastRow.cells[3].className = "correct";
 
-            if (results[i].result === "Correct!"){
-                lastRow.className = "correct";
-                lastRow.cells[4].innerHTML = '<img src="correct.png">';
-            } else {
-                lastRow.className = "wrong";
-                lastRow.cells[4].innerHTML = '<img src="wrong.png">';
-            }
+        if (results[i].result === "Correct!") {
+            lastRow.className = "correct";
+            lastRow.cells[4].innerHTML = '<img src="correct.png">';
+        } else {
+            lastRow.className = "wrong";
+            lastRow.cells[4].innerHTML = '<img src="wrong.png">';
         }
-	var totalWrong = gbc('wrong').length; //dodgy maths. Could throw up bugs
-	var totalQuestions = gbi('resultsTable').rows.length - 1;
-	var totalCorrect = totalQuestions - totalWrong;
+    }
+    var totalWrong = gbc('wrong').length; //dodgy maths. Could throw up bugs
+    var totalQuestions = gbi('resultsTable').rows.length - 1;
+    var totalCorrect = totalQuestions - totalWrong;
 }
 
 
 // Hover to show correct answer
-function listenToRows(){
-	for (var j=1; j < results.length+ 1 ; j++){
-gbi('resultsTable').rows[j].addEventListener('mouseenter',function(){
-	this.cells[3].style.display = "table-cell";
-	this.cells[2].style.display = "none";
-})
-gbi('resultsTable').rows[j].addEventListener('mouseleave',function(){
-	this.cells[3].style.display = "none";
-	this.cells[2].style.display = "table-cell";
-})
-	}
+function listenToRows() {
+    for (var j = 1; j < results.length + 1; j++) {
+        gbi('resultsTable').rows[j].addEventListener('mouseenter', function () {
+            this.cells[3].style.display = "table-cell";
+            this.cells[2].style.display = "none";
+        })
+        gbi('resultsTable').rows[j].addEventListener('mouseleave', function () {
+            this.cells[3].style.display = "none";
+            this.cells[2].style.display = "table-cell";
+        })
+    }
 }
 
 // Play again
-gbi('playagain').addEventListener("click", function(){
-  location.reload();
+gbi('playagain').addEventListener("click", function () {
+    location.reload();
 })
