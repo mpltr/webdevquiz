@@ -51,7 +51,7 @@ gbi('create').addEventListener('click', function(){
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
 			 alert("Exported!")
-            alert(xmlhttp.responseText);
+            location.reload();
 		}
 	}
 	xmlhttp.send(params);
