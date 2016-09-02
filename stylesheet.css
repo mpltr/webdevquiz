@@ -137,10 +137,10 @@ body {
 #topicHolder {
     position: relative;
     display: inline-block;
-    width: calc(59.6% - 100px);
+    width: 59.6%;
     vertical-align: top;
-    height: calc(97% - 100px);
-    padding: 50px;
+    height: 80%;
+    text-align: center;
 }
 
 #questionWarning {
@@ -154,14 +154,12 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
-    height: 12%;
-    margin: 20px;
-    padding: 20px;
+    width: 30%;
+    height: 20%;
+    margin: 8px;
     text-align: center;
     line-height: 220%;
     font-size: 1.8em;
-    padding: 10px;
     border-radius: 5px;
     background-color: #ff5c5c;
     border: 1px solid #646464;
@@ -177,13 +175,11 @@ body {
     position: relative;
     top: 4px;
     left: 3px;
-    width: 20%;
-    margin: 20px;
-    padding: 20px;
+    width: 30%;
+    margin: 8px;
     text-align: center;
-    height: 12%;
+    height: 20%;
     font-size: 1.8em;
-    padding: 10px;
     border-radius: 5px;
     background-color: #77cc6c;
     border: 1px solid #646464;
@@ -227,13 +223,12 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 10%;
-    height: 8%;
-    margin: 20px;
-    padding: 0px;
+    width: 25%;
+    height: 13%;
+    margin: 8px;
     text-align: center;
     font-size: 2.2em;
-    padding: 10px;
+    /*padding: 10px;*/
     border-radius: 5px;
     background-color: #D5B942;
     border: 1px solid #646464;
@@ -249,19 +244,25 @@ body {
     position: relative;
     top: 4px;
     left: 3px;
-    width: 10%;
-    margin: 20px;
-    padding: 0px;
+    width: 25%;
+    margin: 8px;
     text-align: center;
-    height: 8%;
+    height: 13%;
     font-size: 2.2em;
-    padding: 10px;
     border-radius: 5px;
     background-color: #77cc6c;
     border: 1px solid #646464;
     box-shadow: 1px 1px #505050;
     cursor: pointer;
     color: #505050;
+}
+
+#questionWarning {
+    border: 1px solid red;
+    width: 78%;
+    position: absolute;
+    bottom: -100px;
+    padding: 3px;
 }
 
 #instructions {
@@ -295,17 +296,17 @@ body {
 
 #confirm {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     right: 0;
     bottom: 0;
-    height: 13%;
+    height: 10%;
     width: 13%;
     border-radius: 5px;
-    font-size: 250%;
+    font-size: 150%;
     margin: 20px;
-    padding: 20px;
     text-align: center;
-    line-height: 220%;
-    font-size: 2.2em;
     padding: 10px;
     border-radius: 5px;
     background-color: rgba(121, 121, 121, 0.4);
