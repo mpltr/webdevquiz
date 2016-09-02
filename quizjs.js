@@ -245,10 +245,12 @@ function displayQuestion(number) {
             gbi('answerTwo').innerHTML = ind(2) + selectedQuestion[number].answer2;
             gbi('answerThree').innerHTML = ind(3) + selectedQuestion[number].answer3;
             gbi('answerFour').innerHTML = ind(4) + selectedQuestion[number].answer4;
+            gbi('topic-indicator').innerHTML = selectedQuestion[number].topic;    
         } else if (selectedQuestion[number].type == "input") {
             gbi('answerWrap').style.display = "none";
             gbi('typeWrap').style.display = "flex";
             gbi('question').innerHTML = selectedQuestion[number].quest;
+            gbi('topic-indicator').innerHTML = selectedQuestion[number].topic;               
             // For the first question, need to wait for page animation to finish before focusing on the type_answer box. focus() has a bug which requires the setTimeout function to be set!
             if (number == 0) {
                 setTimeout("gbi('type_answer').focus();", 700);
@@ -409,6 +411,21 @@ function correctOrWrong(uA, cA) {
     }
 }
 
+// show/hide help screen
+function showHelpScreen() {
+    gbi('cover').style.display = "block";
+    gbi('instructions').style.display = "block";
+}
+gbi('help').addEventListener("click", showHelpScreen);
+
+function closeHelpScreen() {
+    gbi('cover').style.display = "none";
+    gbi('instructions').style.display = "none";
+}
+gbi('close').addEventListener("click", closeHelpScreen);
+gbi('cover').addEventListener("click", closeHelpScreen);
+
+
 // Display the Results
 function displayResults() {
     for (var i = 0; i < results.length; i++) {
@@ -438,8 +455,9 @@ function displayResults() {
         }
     }
     var totalWrong = gbc('wrong').length; //dodgy maths. Could throw up bugs
-    var totalQuestions = gbi('resultsTable').rows.length - 1;
+    var totalQuestions = results.length;
     var totalCorrect = totalQuestions - totalWrong;
+    gbi('total').innerHTML = totalCorrect + ' / ' + totalQuestions;
 }
 
 

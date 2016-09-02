@@ -1,1 +1,35 @@
-[{"quest":"What is the symbol you must put before every JQuery command?","answer1":"$","answer2":"\u00a3","answer3":"%","answer4":"&","used":false,"correct":1},{"type":"input","quest":"Type the jquery line to toggle the class 'highlight' on an element with an id of 'box'.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"$('#box').toggleClass(\"highlight\");"},{"type":"input","quest":"Type the line in jQuery to toggle the appearance of a div with an id of 'box'.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"$('#box').toggle();"}]
+[
+  {
+    "type": "multi",
+    "quest": "What is the symbol you must put before every JQuery command?",
+    "answer1": "$",
+    "answer2": "£",
+    "answer3": "%",
+    "answer4": "&",
+    "used": false,
+    "correct": 1,
+    "topic": "jQuery"
+  },
+  {
+    "type": "input",
+    "quest": "Type the jquery line to toggle the class 'highlight' on an element with an id of 'box'.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "$('#box').toggleClass(\"highlight\");",
+    "topic": "jQuery"
+  },
+  {
+    "type": "input",
+    "quest": "Type the line in jQuery to toggle the appearance of a div with an id of 'box'.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "$('#box').toggle();",
+    "topic": "jQuery"
+  }
+]

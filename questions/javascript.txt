@@ -1,1 +1,123 @@
-[{"type":"multi", "quest":"In Regular Expressions, what does backslash w mean?","answer1":"whitespace","answer2":"Any alphanumeric number","answer3":"Any word Character","answer4":"Any Character","used":false,"correct":3},{"type":"input","quest":"Type the line required to refresh the page in JavaScript.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"location.reload();"},{"type":"multi","quest":"Which of the following will return the viewport width in javascript?","answer1":"window.width","answer2":"window.innerWidth","answer3":"document.width","answer4":"document.innerWidth","used":false,"correct":"2"},{"type":"multi","quest":"Which of the following will return the viewport height in javascript?","answer1":"document.height","answer2":"document.innerHeight","answer3":"window.height","answer4":"window.innerHeight","used":false,"correct":"4"},{"type":"multi","quest":"Which of the following will return the height of an existing element?","answer1":"element.style.height","answer2":"element.height","answer3":"element.clientHeight","answer4":"element.elementHeight","used":false,"correct":"3"},{"type":"input","quest":"Complete the following to get a new date in javascript: var date =","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"new Date();"},{"type":"input","quest":"There is a variable called 'date' which contains a new Date. Complete the following to get the time from date: var time =","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"date.getTime();"},{"type":"input","quest":"Complete the following to create a new ajax request in javascript: var request =","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"new XMLHttpRequest();"},{"type":"input","quest":"You have a new XMLHttpRequest called request. Type the line required to set the type to POST, and the destination to 'backend.php'.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"request.open('POST', 'backend.php', true);"},{"type":"multi","quest":"You have a XMLHttpRequest called 'request'. How do you send it with no parameters when the request type is GET?","answer1":"request.send();","answer2":"request.send('');","answer3":"request.send(null);","answer4":"request.send(noParam);","used":false,"correct":"3"},{"type":"input","quest":"You want to see the response text from an AJAX request called 'request' in javascript. Complete the following: alert","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"(request.responseText);"}]
+[
+  {
+    "type": "multi",
+    "quest": "In Regular Expressions, what does backslash w mean?",
+    "answer1": "whitespace",
+    "answer2": "Any alphanumeric number",
+    "answer3": "Any word Character",
+    "answer4": "Any Character",
+    "used": false,
+    "correct": 3,
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "Type the line required to refresh the page in JavaScript.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "location.reload();",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "multi",
+    "quest": "Which of the following will return the viewport width in javascript?",
+    "answer1": "window.width",
+    "answer2": "window.innerWidth",
+    "answer3": "document.width",
+    "answer4": "document.innerWidth",
+    "used": false,
+    "correct": "2",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "multi",
+    "quest": "Which of the following will return the viewport height in javascript?",
+    "answer1": "document.height",
+    "answer2": "document.innerHeight",
+    "answer3": "window.height",
+    "answer4": "window.innerHeight",
+    "used": false,
+    "correct": "4",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "multi",
+    "quest": "Which of the following will return the height of an existing element?",
+    "answer1": "element.style.height",
+    "answer2": "element.height",
+    "answer3": "element.clientHeight",
+    "answer4": "element.elementHeight",
+    "used": false,
+    "correct": "3",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "Complete the following to get a new date in javascript: var date =",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "new Date();",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "There is a variable called 'date' which contains a new Date. Complete the following to get the time from date: var time =",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "date.getTime();",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "Complete the following to create a new ajax request in javascript: var request =",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "new XMLHttpRequest();",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "You have a new XMLHttpRequest called request. Type the line required to set the type to POST, and the destination to 'backend.php'.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "request.open('POST', 'backend.php', true);",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "multi",
+    "quest": "You have a XMLHttpRequest called 'request'. How do you send it with no parameters when the request type is GET?",
+    "answer1": "request.send();",
+    "answer2": "request.send('');",
+    "answer3": "request.send(null);",
+    "answer4": "request.send(noParam);",
+    "used": false,
+    "correct": "3",
+    "topic": "JavaScript"
+  },
+  {
+    "type": "input",
+    "quest": "You want to see the response text from an AJAX request called 'request' in javascript. Complete the following: alert",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "(request.responseText);",
+    "topic": "JavaScript"
+  }
+]

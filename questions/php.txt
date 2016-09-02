@@ -1,1 +1,24 @@
-[{"quest":"What is the php line to receive JSON data?","answer1":"$data = $_POST(JSON);","answer2":"$data = json_decode(file_get_contents('php:\/\/input'));","answer3":"$data = $_POST(<variable name>);","answer4":"$data = json_GET(file_get_contents('php:\/\/input'));","used":false,"correct":"2"},{"quest":"How do you put a date into a variable in PHP?","answer1":"$Date = getDate();","answer2":"$Date = Today();","answer3":"$Date = date('m\/d\/Y');","answer4":"$Date = showDate('m\/d\/Y')","used":false,"correct":"3"}]
+[
+  {
+    "type": "multi",
+    "quest": "What is the php line to receive JSON data?",
+    "answer1": "$data = $_POST(JSON);",
+    "answer2": "$data = json_decode(file_get_contents('php://input'));",
+    "answer3": "$data = $_POST(<variable name>);",
+    "answer4": "$data = json_GET(file_get_contents('php://input'));",
+    "used": false,
+    "correct": "2",
+    "topic": "PHP"
+  },
+  {
+    "type": "multi",
+    "quest": "How do you put a date into a variable in PHP?",
+    "answer1": "$Date = getDate();",
+    "answer2": "$Date = Today();",
+    "answer3": "$Date = date('m/d/Y');",
+    "answer4": "$Date = showDate('m/d/Y')",
+    "used": false,
+    "correct": "3",
+    "topic": "PHP"
+  }
+]

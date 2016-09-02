@@ -1,1 +1,145 @@
-[{"type":"input","quest":"Finish this: Matt is a...?","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"bellend"},{"type":"input","quest":"Type the command for initialising a Git repository in the current directory.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git init"},{"type":"input","quest":"Type the command for checking the Git working tree status","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git status"},{"type":"input","quest":"Type the command to add newfile.html to the Git staging area.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git add newfile.html"},{"type":"input","quest":"Type the command to commit your staged changes in Git with comment 'updates'.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git commit -m 'updates'"},{"type":"input","quest":"Type the command to add all .txt files to the Git staging area.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git add *.txt"},{"type":"input","quest":"Type the command to access the Git log.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git log"},{"type":"input","quest":"Type the command to stash your changes in Git?","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git stash"},{"type":"multi","quest":"What is the Git command to see the the differences of files you have just staged?","answer1":"git diff staged","answer2":"git diff changes","answer3":"git diff --staged","answer4":"git diff","used":false,"correct":"3"},{"type":"input","quest":"Type the command to remove 'newfile.html' from the staging area, but not delete it.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git reset newfile.html"},{"type":"input","quest":"Type the command to revert 'newfile.html' back to it's stage before the last commit on Git.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git revert newfile.html"},{"type":"input","quest":"Type the command to see all the branches on git.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git branch"},{"type":"input","quest":"Type the command to get to 'newfeature' branch on Git.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git checkout newfeature"},{"type":"input","quest":"Type the command to delete the 'newfeature' branch on Git.","answer1":"","answer2":"","answer3":"","answer4":"","used":false,"correct":"git branch -d newfeature"}]
+[
+  {
+    "type": "input",
+    "quest": "Type the command for initialising a Git repository in the current directory.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git init",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command for checking the Git working tree status",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git status",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to add newfile.html to the Git staging area.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git add newfile.html",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to commit your staged changes in Git with comment 'updates'.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git commit -m 'updates'",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to add all .txt files to the Git staging area.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git add *.txt",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to access the Git log.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git log",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to stash your changes in Git?",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git stash",
+    "topic": "git"
+  },
+  {
+    "type": "multi",
+    "quest": "What is the Git command to see the the differences of files you have just staged?",
+    "answer1": "git diff staged",
+    "answer2": "git diff changes",
+    "answer3": "git diff --staged",
+    "answer4": "git diff",
+    "used": false,
+    "correct": "3",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to remove 'newfile.html' from the staging area, but not delete it.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git reset newfile.html",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to revert 'newfile.html' back to it's stage before the last commit on Git.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git revert newfile.html",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to see all the branches on git.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git branch",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to get to 'newfeature' branch on Git.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git checkout newfeature",
+    "topic": "git"
+  },
+  {
+    "type": "input",
+    "quest": "Type the command to delete the 'newfeature' branch on Git.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "git branch -d newfeature",
+    "topic": "git"
+  }
+]
