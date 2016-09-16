@@ -64,5 +64,16 @@
     "used": false,
     "correct": "3",
     "topic": "CSS"
+  },
+  {
+    "type": "multi",
+    "quest": "What needs to be set for an a fixed or absolutely positioned div to be centered by 'margin: auto'?",
+    "answer1": "margin: 0;",
+    "answer2": "left: 0;",
+    "answer3": "left: 0; and right: 0;",
+    "answer4": "right: 0;",
+    "used": false,
+    "correct": "3",
+    "topic": "css"
   }
 ]

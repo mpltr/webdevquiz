@@ -1,4 +1,4 @@
-function tempQuestion (ty, qu, a1, a2, a3, a4, c1){
+function tempQuestion (ty, qu, a1, a2, a3, a4, c1, to){
     this.type = ty;
 	this.quest = qu,
 	this.answer1 = a1,
@@ -7,6 +7,7 @@ function tempQuestion (ty, qu, a1, a2, a3, a4, c1){
 	this.answer4 = a4;
 	this.used = false;
 	this.correct = c1;
+    this.topic = to;
 }
 
 function gbi(id) {
@@ -31,6 +32,7 @@ gbi('create').addEventListener('click', function(){
     var thirdAnswerSplit    = gbi('answerThree').value;
     var fourthAnswerSplit   = gbi('answerFour').value;
     var correctAnswerSplit  = gbi('correct').value;
+    var topic               = gbi('topicSelect').value
         var ty = typeSplit;
         var qu = questionSplit;
         var a1 = firstAnswerSplit;
@@ -38,7 +40,8 @@ gbi('create').addEventListener('click', function(){
         var a3 = thirdAnswerSplit;
         var a4 = fourthAnswerSplit;
         var c1 = correctAnswerSplit;
-        tempArray[tempArray.length] = new tempQuestion (ty, qu, a1, a2, a3, a4, c1);
+        var to = topic;
+        tempArray[tempArray.length] = new tempQuestion (ty, qu, a1, a2, a3, a4, c1, to);
     var data    = JSON.stringify(tempArray);
     var dest    = gbi('topicSelect').value;
     var params  = 'data=' + data + '&dest=' + dest;
