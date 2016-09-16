@@ -24,6 +24,9 @@ function gbt(ta) {
 
 var tempArray = new Array();
 
+var topicArray = ['css', 'html', 'javascript', 'jquery', 'php', 'powershell'];
+var capTopicArray = ['CSS', 'HTML', 'JavaScript', 'jQuery', 'PhP', 'PowerShell'];
+var topicArrayLength = topicArray.length;
 gbi('create').addEventListener('click', function(){
     var typeSplit           = gbi('type').value;
     var questionSplit       = gbi('question').value;
@@ -40,7 +43,12 @@ gbi('create').addEventListener('click', function(){
         var a3 = thirdAnswerSplit;
         var a4 = fourthAnswerSplit;
         var c1 = correctAnswerSplit;
-        var to = topic;
+        var to = null;
+        for (var i = 0; i < topicArrayLength; i++){
+            if(topic === topicArray[i]){
+                to = capTopicArray[i];
+            }
+        }
         tempArray[tempArray.length] = new tempQuestion (ty, qu, a1, a2, a3, a4, c1, to);
     var data    = JSON.stringify(tempArray);
     var dest    = gbi('topicSelect').value;

@@ -1,0 +1,200 @@
+[
+  {
+    "type": "input",
+    "quest": "Navigate to directory 'C:\\test\\subtest' using the unix and command-prompt alias",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "cd c:\\test\\subtest",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Navigate to directory 'C:\\test\\subtest' using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "set-location c:\\test\\subtest",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Display the contents of 'test.txt' using the powershell command.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "get-content test.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Rename 'test.txt' to 'temp.txt' using the powershell command.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "rename-item test.txt temp.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Rename 'test.txt' to 'temp.txt' using the command-prompt and unix alias.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "ren test.txt temp.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "In the current directory, create a new folder called 'LabOutput' using the command-prompt and unix alias.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "mkdir LabOutput",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "In the current directory, create a new folder called 'LabOutput' using the powershell command.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "New-Item LabOutput",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Copy 'test.txt'  into the folder 'allTests' using the unix alias",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "cp test.txt allTests",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Copy 'test.txt'  into the folder 'allTests' using the command-prompt alias",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "copy test.txt alltests",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Copy 'test.txt'  into the folder 'allTests' using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "copy-item test.txt allTests",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Delete the file 'text.txt' from the current directory using the unix alias ",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "rm text.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Delete the file 'text.txt' from the current directory using the command-prompt alias ",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "del test.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Delete the file 'text.txt' from the current directory using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "remove-item test.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Display a list of running processes using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "get-process",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Store a list of running processes in a file called procs.txt using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "get-process > procs.txt",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Move 'test.txt' into the 'allTests' folder using the unix and command-prompt alias",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "move test.txt allTests",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Move 'test.txt' into the 'allTests' folder using the powershell command",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "move-item test.txt alltests",
+    "topic": "PowerShell"
+  },
+  {
+    "type": "input",
+    "quest": "Display test.txt one page at a time using 'more'.",
+    "answer1": "",
+    "answer2": "",
+    "answer3": "",
+    "answer4": "",
+    "used": false,
+    "correct": "get-content test.txt | more",
+    "topic": "PowerShell"
+  }
+]
